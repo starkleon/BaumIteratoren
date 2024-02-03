@@ -39,17 +39,16 @@ public class Node<T extends Comparable<T>>{
         return ret;
     }
 
-    public Node getLeft() {
+    public Node<T> getLeft() {
         return left;
     }
-
+    public Node<T> getRight() {
+        return right;
+    }
     public T getValue() {
         return value;
     }
 
-    public Node getRight() {
-        return right;
-    }
     @Override
     public String toString(){
         return value + "";

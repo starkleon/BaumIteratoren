@@ -28,21 +28,20 @@ public class Tree<T extends Comparable<T>> implements Iterable{
 
     @Override
     public Iterator<Node<T>> iterator() {
-        return new TreeIterator<>(this.root);
+        return new TreeIterator<T>(this.root);
     }
 
-
     private static class TreeIterator<T extends Comparable<T>> implements Iterator<Node<T>>{
-        Iterator<Node> left;
-        Iterator<Node> right;
-        Node element;
-        boolean yieldedOwnValue = false;
+        private final Node<T> element;
+        private Iterator<Node<T>> left;
+        private Iterator<Node<T>> right;
+        private boolean yieldedOwnValue = false;
 
         public TreeIterator(Node<T> root){
             element = root;
-            if(root != null) {
-                left = new TreeIterator<>(root.getLeft());
-                right = new TreeIterator<>(root.getRight());
+            if(element != null) {
+                left = new TreeIterator<T>(element.getLeft());
+                right = new TreeIterator<T>(element.getRight());
             }
         }
 

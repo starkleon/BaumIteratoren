@@ -22,13 +22,13 @@ public class Tree<T extends Comparable<T>> implements Iterable<Node<T>>{
 
     @Override
     public Iterator<Node<T>> iterator() {
-        return new TreeIterator<T>(root);
+        return new TreeIterator<T>(this.root);
     }
 
     private static class TreeIterator<T extends Comparable<T>> implements Iterator<Node<T>>{
-        private Node<T> element;
-        private TreeIterator<T> left;
-        private TreeIterator<T> right;
+        private final Node<T> element;
+        private Iterator<Node<T>> left;
+        private Iterator<Node<T>> right;
         private boolean yieldedOwnValue = false;
 
         public TreeIterator(Node<T> root){
@@ -64,11 +64,4 @@ public class Tree<T extends Comparable<T>> implements Iterable<Node<T>>{
             }
         }
     }
-
-    public void main(String[] args){
-        Tree<Integer> t = new Tree<>();
-        t.insert(new Node<>(5));
-    }
-
-
 }

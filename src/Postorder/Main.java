@@ -13,7 +13,7 @@ public class Main {
         t.insert(new Node<>(8));
 
 
-        for(Node n : t){
+        for(Node<Integer> n : t){
             System.out.println(n);
         }
     }
